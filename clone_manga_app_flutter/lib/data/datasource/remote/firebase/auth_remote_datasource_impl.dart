@@ -15,7 +15,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       _firestore.collection('User');
 
   String _fakeEmailFromUsername(String username) {
-    return '$username@fakeapp.local';
+    return '$username@fakeapp.com';
   }
 
   @override
