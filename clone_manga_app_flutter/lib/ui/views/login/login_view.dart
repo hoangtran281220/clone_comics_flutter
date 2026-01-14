@@ -7,8 +7,7 @@ import 'login_view.form.dart';
 
 @FormView(
     fields: [FormTextField(name: 'username'), FormTextField(name: 'password')])
-
-class LoginView extends StackedView<LoginViewModel> with $LoginView{
+class LoginView extends StackedView<LoginViewModel> with $LoginView {
   const LoginView({super.key});
 
   @override
@@ -17,8 +16,8 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView{
     LoginViewModel viewModel,
     Widget? child,
   ) {
-    if(viewModel.hasError){
-      WidgetsBinding.instance.addPostFrameCallback((_){
+    if (viewModel.hasError) {
+      WidgetsBinding.instance.addPostFrameCallback((_) {
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
             content: Text(viewModel.modelError as String),
@@ -30,17 +29,14 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView{
 
     return Scaffold(
       body: Container(
-          decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  colors: [
-                    Color.fromARGB(255, 255, 255, 255),
-                    Color.fromARGB(100, 100, 100, 100)
-                  ]
-              )
-          ),
-        
+        decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+              Color.fromARGB(255, 255, 255, 255),
+              Color.fromARGB(100, 100, 100, 100)
+            ])),
         child: SafeArea(
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -98,9 +94,8 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView{
                     width: double.infinity,
                     height: 48,
                     child: ElevatedButton(
-                      onPressed: viewModel.isBusy
-                          ? null
-                          : viewModel.loginWithUsername,
+                      onPressed:
+                          viewModel.isBusy ? null : viewModel.loginWithUsername,
                       style: ElevatedButton.styleFrom(
                         backgroundColor: Colors.white,
                         foregroundColor: const Color(0xFF3F7DE8),
@@ -111,12 +106,12 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView{
                       child: viewModel.isBusy
                           ? const CircularProgressIndicator()
                           : const Text(
-                        'LOGIN',
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          letterSpacing: 1,
-                        ),
-                      ),
+                              'LOGIN',
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 1,
+                              ),
+                            ),
                     ),
                   ),
                   const SizedBox(height: 24),
@@ -131,9 +126,8 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView{
 
                   // 🔹 Google Sign-In
                   IconButton(
-                    onPressed: viewModel.isBusy
-                        ? null
-                        : viewModel.loginWithGoogle,
+                    onPressed:
+                        viewModel.isBusy ? null : viewModel.loginWithGoogle,
                     icon: Image.network(
                       'https://upload.wikimedia.org/wikipedia/commons/0/09/IOS_Google_icon.png',
                       width: 36,
@@ -155,7 +149,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView{
                           // navigate to register
                         },
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: viewModel.goToRegister,
                           child: const Text(
                             'Sign up',
                             style: TextStyle(

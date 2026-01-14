@@ -1,14 +1,18 @@
+import 'package:clone_manga_app_flutter/app/app.router.dart';
 import 'package:clone_manga_app_flutter/domain/exceptions/auth_exception.dart';
 import 'package:clone_manga_app_flutter/domain/usecases/params/auth_param.dart';
 import 'package:clone_manga_app_flutter/ui/views/register/register_view.form.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/app.locator.dart';
 import '../../../domain/entities/user.dart';
 import '../../../domain/usecases/register_usecase.dart';
 
-class RegisterViewModel extends BaseViewModel with FormStateHelper{
+class RegisterViewModel extends BaseViewModel with FormStateHelper {
   final _registerUseCase = locator<RegisterUseCase>();
+  final _navigationService = locator<NavigationService>();
+
   User? _user;
   User? get user => _user;
 
@@ -31,15 +35,21 @@ class RegisterViewModel extends BaseViewModel with FormStateHelper{
         password: passwordValue!,
       );
       _user = await _registerUseCase.execute(params);
-    } on AuthException catch(e){
+
+      if (_user != null) {
+        goToLogin();
+      }
+    } on AuthException catch (e) {
       setError(e.message);
-    } catch(_) {
+    } catch (_) {
       setError('Lỗi không xác định');
-    }
-    finally {
+    } finally {
       setBusy(false);
       notifyListeners();
     }
   }
 
+  void goToLogin() {
+    _navigationService.replaceWithLoginView();
+  }
 }

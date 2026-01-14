@@ -15,11 +15,18 @@ class RegisterView extends StackedView<RegisterViewModel> with $RegisterView {
 
   @override
   Widget builder(
-      BuildContext context,
-      RegisterViewModel viewModel,
-      Widget? child,
-      ) {
+    BuildContext context,
+    RegisterViewModel viewModel,
+    Widget? child,
+  ) {
     return Scaffold(
+      appBar: AppBar(
+        title: const Text('Register'),
+        leading: IconButton(
+          onPressed: viewModel.goToLogin,
+          icon: const Icon(Icons.arrow_back),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
         child: Center(
@@ -41,12 +48,12 @@ class RegisterView extends StackedView<RegisterViewModel> with $RegisterView {
                 controller: confirmPasswordController,
                 obscureText: true,
                 decoration:
-                const InputDecoration(labelText: 'Confirm Password'),
+                    const InputDecoration(labelText: 'Confirm Password'),
               ),
               const SizedBox(height: 20),
               ElevatedButton(
                 onPressed:
-                viewModel.isBusy ? null : viewModel.registerWithUsername,
+                    viewModel.isBusy ? null : viewModel.registerWithUsername,
                 child: const Text('Register'),
               ),
             ],
@@ -61,4 +68,9 @@ class RegisterView extends StackedView<RegisterViewModel> with $RegisterView {
     BuildContext context,
   ) =>
       RegisterViewModel();
+
+  @override
+  void onViewModelReady(RegisterViewModel viewModel) {
+    syncFormWithViewModel(viewModel);
+  }
 }

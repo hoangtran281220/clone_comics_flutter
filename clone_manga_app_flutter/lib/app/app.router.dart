@@ -6,6 +6,9 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:clone_manga_app_flutter/domain/entities/chapter.dart' as _i13;
+import 'package:clone_manga_app_flutter/ui/views/chapter_detail/chapter_detail_view.dart'
+    as _i11;
 import 'package:clone_manga_app_flutter/ui/views/comic_detail/comic_detail_view.dart'
     as _i5;
 import 'package:clone_manga_app_flutter/ui/views/favorite/favorite_view.dart'
@@ -21,10 +24,10 @@ import 'package:clone_manga_app_flutter/ui/views/splash/splash_view.dart'
     as _i4;
 import 'package:clone_manga_app_flutter/ui/views/startup/startup_view.dart'
     as _i3;
-import 'package:flutter/material.dart' as _i11;
+import 'package:flutter/material.dart' as _i12;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i12;
+import 'package:stacked_services/stacked_services.dart' as _i14;
 
 class Routes {
   static const homeView = '/home-view';
@@ -45,6 +48,8 @@ class Routes {
 
   static const registerView = '/register-view';
 
+  static const chapterDetailView = '/chapter-detail-view';
+
   static const all = <String>{
     homeView,
     startupView,
@@ -55,6 +60,7 @@ class Routes {
     favoriteView,
     loginView,
     registerView,
+    chapterDetailView,
   };
 }
 
@@ -69,6 +75,7 @@ class StackedRouter extends _i1.RouterBase {
     _i1.RouteDef(Routes.favoriteView, page: _i8.FavoriteView),
     _i1.RouteDef(Routes.loginView, page: _i9.LoginView),
     _i1.RouteDef(Routes.registerView, page: _i10.RegisterView),
+    _i1.RouteDef(Routes.chapterDetailView, page: _i11.ChapterDetailView),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
@@ -76,7 +83,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<HomeViewArguments>(
         orElse: () => const HomeViewArguments(),
       );
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => _i2.HomeView(key: args.key),
         settings: data,
       );
@@ -85,7 +92,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<StartupViewArguments>(
         orElse: () => const StartupViewArguments(),
       );
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => _i3.StartupView(key: args.key),
         settings: data,
       );
@@ -94,14 +101,14 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<SplashViewArguments>(
         orElse: () => const SplashViewArguments(),
       );
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => _i4.SplashView(key: args.key),
         settings: data,
       );
     },
     _i5.ComicDetailView: (data) {
       final args = data.getArgs<ComicDetailViewArguments>(nullOk: false);
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i5.ComicDetailView(key: args.key, comicId: args.comicId),
         settings: data,
@@ -111,7 +118,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<SearchViewArguments>(
         orElse: () => const SearchViewArguments(),
       );
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => _i6.SearchView(key: args.key),
         settings: data,
       );
@@ -120,7 +127,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<MainViewArguments>(
         orElse: () => const MainViewArguments(),
       );
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => _i7.MainView(key: args.key),
         settings: data,
       );
@@ -129,7 +136,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<FavoriteViewArguments>(
         orElse: () => const FavoriteViewArguments(),
       );
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => _i8.FavoriteView(key: args.key),
         settings: data,
       );
@@ -138,7 +145,7 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<LoginViewArguments>(
         orElse: () => const LoginViewArguments(),
       );
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => _i9.LoginView(key: args.key),
         settings: data,
       );
@@ -147,8 +154,16 @@ class StackedRouter extends _i1.RouterBase {
       final args = data.getArgs<RegisterViewArguments>(
         orElse: () => const RegisterViewArguments(),
       );
-      return _i11.MaterialPageRoute<dynamic>(
+      return _i12.MaterialPageRoute<dynamic>(
         builder: (context) => _i10.RegisterView(key: args.key),
+        settings: data,
+      );
+    },
+    _i11.ChapterDetailView: (data) {
+      final args = data.getArgs<ChapterDetailViewArguments>(nullOk: false);
+      return _i12.MaterialPageRoute<dynamic>(
+        builder: (context) =>
+            _i11.ChapterDetailView(key: args.key, chapter: args.chapter),
         settings: data,
       );
     },
@@ -164,7 +179,7 @@ class StackedRouter extends _i1.RouterBase {
 class HomeViewArguments {
   const HomeViewArguments({this.key});
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {
@@ -186,7 +201,7 @@ class HomeViewArguments {
 class StartupViewArguments {
   const StartupViewArguments({this.key});
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {
@@ -208,7 +223,7 @@ class StartupViewArguments {
 class SplashViewArguments {
   const SplashViewArguments({this.key});
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {
@@ -230,7 +245,7 @@ class SplashViewArguments {
 class ComicDetailViewArguments {
   const ComicDetailViewArguments({this.key, required this.comicId});
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   final String comicId;
 
@@ -254,7 +269,7 @@ class ComicDetailViewArguments {
 class SearchViewArguments {
   const SearchViewArguments({this.key});
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {
@@ -276,7 +291,7 @@ class SearchViewArguments {
 class MainViewArguments {
   const MainViewArguments({this.key});
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {
@@ -298,7 +313,7 @@ class MainViewArguments {
 class FavoriteViewArguments {
   const FavoriteViewArguments({this.key});
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {
@@ -320,7 +335,7 @@ class FavoriteViewArguments {
 class LoginViewArguments {
   const LoginViewArguments({this.key});
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {
@@ -342,7 +357,7 @@ class LoginViewArguments {
 class RegisterViewArguments {
   const RegisterViewArguments({this.key});
 
-  final _i11.Key? key;
+  final _i12.Key? key;
 
   @override
   String toString() {
@@ -361,9 +376,33 @@ class RegisterViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i12.NavigationService {
+class ChapterDetailViewArguments {
+  const ChapterDetailViewArguments({this.key, required this.chapter});
+
+  final _i12.Key? key;
+
+  final _i13.Chapter chapter;
+
+  @override
+  String toString() {
+    return '{"key": "$key", "chapter": "$chapter"}';
+  }
+
+  @override
+  bool operator ==(covariant ChapterDetailViewArguments other) {
+    if (identical(this, other)) return true;
+    return other.key == key && other.chapter == chapter;
+  }
+
+  @override
+  int get hashCode {
+    return key.hashCode ^ chapter.hashCode;
+  }
+}
+
+extension NavigatorStateExtension on _i14.NavigationService {
   Future<dynamic> navigateToHomeView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -381,7 +420,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> navigateToStartupView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -399,7 +438,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> navigateToSplashView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -417,7 +456,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> navigateToComicDetailView({
-    _i11.Key? key,
+    _i12.Key? key,
     required String comicId,
     int? routerId,
     bool preventDuplicates = true,
@@ -436,7 +475,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> navigateToSearchView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -454,7 +493,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> navigateToMainView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -472,7 +511,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> navigateToFavoriteView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -490,7 +529,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> navigateToLoginView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -508,7 +547,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> navigateToRegisterView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -525,8 +564,27 @@ extension NavigatorStateExtension on _i12.NavigationService {
     );
   }
 
+  Future<dynamic> navigateToChapterDetailView({
+    _i12.Key? key,
+    required _i13.Chapter chapter,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(
+      Routes.chapterDetailView,
+      arguments: ChapterDetailViewArguments(key: key, chapter: chapter),
+      id: routerId,
+      preventDuplicates: preventDuplicates,
+      parameters: parameters,
+      transition: transition,
+    );
+  }
+
   Future<dynamic> replaceWithHomeView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -544,7 +602,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> replaceWithStartupView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -562,7 +620,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> replaceWithSplashView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -580,7 +638,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> replaceWithComicDetailView({
-    _i11.Key? key,
+    _i12.Key? key,
     required String comicId,
     int? routerId,
     bool preventDuplicates = true,
@@ -599,7 +657,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> replaceWithSearchView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -617,7 +675,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> replaceWithMainView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -635,7 +693,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> replaceWithFavoriteView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -653,7 +711,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> replaceWithLoginView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -671,7 +729,7 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> replaceWithRegisterView({
-    _i11.Key? key,
+    _i12.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -681,6 +739,25 @@ extension NavigatorStateExtension on _i12.NavigationService {
     return replaceWith<dynamic>(
       Routes.registerView,
       arguments: RegisterViewArguments(key: key),
+      id: routerId,
+      preventDuplicates: preventDuplicates,
+      parameters: parameters,
+      transition: transition,
+    );
+  }
+
+  Future<dynamic> replaceWithChapterDetailView({
+    _i12.Key? key,
+    required _i13.Chapter chapter,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(
+      Routes.chapterDetailView,
+      arguments: ChapterDetailViewArguments(key: key, chapter: chapter),
       id: routerId,
       preventDuplicates: preventDuplicates,
       parameters: parameters,

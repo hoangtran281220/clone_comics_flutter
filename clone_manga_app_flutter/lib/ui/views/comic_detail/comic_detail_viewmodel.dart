@@ -1,6 +1,8 @@
+import 'package:clone_manga_app_flutter/app/app.router.dart';
 import 'package:clone_manga_app_flutter/domain/entities/chapter.dart';
 import 'package:clone_manga_app_flutter/domain/usecases/get_comic_by_id_usecase.dart';
 import 'package:stacked/stacked.dart';
+import 'package:stacked_services/stacked_services.dart';
 
 import '../../../app/app.locator.dart';
 import '../../../domain/entities/comic.dart';
@@ -13,6 +15,7 @@ class ComicDetailViewmodel extends BaseViewModel {
       locator<GetComicByIdUseCase>();
   final GetChaptersByComicIdUseCase _getChaptersByComicIdUseCase =
       locator<GetChaptersByComicIdUseCase>();
+  final _navigationService = locator<NavigationService>();
 
   Comic? comic;
 
@@ -26,5 +29,9 @@ class ComicDetailViewmodel extends BaseViewModel {
 
     setBusy(false);
     notifyListeners();
+  }
+
+  void goToChapterDetail(Chapter chapter) {
+    _navigationService.replaceWithChapterDetailView(chapter: chapter);
   }
 }

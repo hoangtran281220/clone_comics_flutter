@@ -39,6 +39,7 @@ import 'package:clone_manga_app_flutter/ui/views/login/login_view.dart';
 
 import '../domain/usecases/register_usecase.dart';
 import 'package:clone_manga_app_flutter/ui/views/register/register_view.dart';
+import 'package:clone_manga_app_flutter/ui/views/chapter_detail/chapter_detail_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -52,6 +53,7 @@ import 'package:clone_manga_app_flutter/ui/views/register/register_view.dart';
     MaterialRoute(page: FavoriteView),
     MaterialRoute(page: LoginView),
     MaterialRoute(page: RegisterView),
+    MaterialRoute(page: ChapterDetailView),
 // @stacked-route
   ],
   dependencies: [
