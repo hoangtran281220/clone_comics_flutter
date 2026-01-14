@@ -24,6 +24,8 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
             backgroundColor: Colors.red,
           ),
         );
+
+        viewModel.clearErrors();
       });
     }
 
