@@ -80,8 +80,6 @@ linux/Runner/GeneratedPluginRegistrant.*
 # =========================
 # Firebase / Environment
 # =========================
-**/google-services.json
-**/GoogleService-Info.plist
 .env
 .env.*
 
