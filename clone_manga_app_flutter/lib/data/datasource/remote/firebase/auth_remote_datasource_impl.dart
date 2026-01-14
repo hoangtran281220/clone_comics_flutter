@@ -2,6 +2,7 @@ import 'package:clone_manga_app_flutter/data/datasource/remote/firebase/auth_rem
 import 'package:clone_manga_app_flutter/data/dtos/user_dto.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import '../../../../domain/exceptions/auth_exception.dart';
@@ -9,7 +10,10 @@ import '../../../../domain/exceptions/auth_exception.dart';
 class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-  final GoogleSignIn _googleSignIn = GoogleSignIn.instance;
+  final GoogleSignIn _googleSignIn = GoogleSignIn.instance
+    ..initialize(
+      serverClientId: '332618593014-t0q3lnk6topakcnkrd5hdf0vv1ksruon.apps.googleusercontent.com',
+    );
 
   CollectionReference<Map<String, dynamic>> get _userCol =>
       _firestore.collection('User');
@@ -31,7 +35,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       final account = await _googleSignIn.authenticate();
 
       // 2️⃣ Lấy token
-      final auth = account.authentication;
+      final GoogleSignInAuthentication auth = account.authentication;
       if (auth.idToken == null) {
         throw const GoogleAuthFailedException();
       }

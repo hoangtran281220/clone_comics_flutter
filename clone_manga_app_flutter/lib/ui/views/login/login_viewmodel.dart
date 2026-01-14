@@ -46,6 +46,9 @@ class LoginViewModel extends BaseViewModel with FormStateHelper {
     clearErrors();
     try {
       _user = await _loginWithGoogleUseCase.execute();
+      if(_user != null) {
+        goToMain();
+      }
     } on AuthException catch (e) {
       setError(e.message);
     } catch (_) {
