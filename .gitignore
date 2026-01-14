@@ -1,0 +1,97 @@
+# =========================
+# Flutter / Dart
+# =========================
+.dart_tool/
+.packages
+.pub/
+build/
+
+# Code generation (stacked, build_runner)
+**/*.g.dart
+**/*.freezed.dart
+**/*.config.dart
+**/*.mocks.dart
+
+# Flutter coverage
+coverage/
+
+# =========================
+# IDEs
+# =========================
+# Android Studio / IntelliJ
+.idea/
+*.iml
+
+# VS Code
+.vscode/
+
+# =========================
+# Android
+# =========================
+android/.gradle/
+android/local.properties
+android/key.properties
+android/**/build/
+android/captures/
+
+# Keystore (NEVER commit)
+*.jks
+*.keystore
+
+# =========================
+# iOS
+# =========================
+ios/Pods/
+ios/.symlinks/
+ios/Flutter/Flutter.framework
+ios/Flutter/Flutter.podspec
+ios/Flutter/Generated.xcconfig
+ios/Flutter/ephemeral/
+ios/Flutter/App.framework
+ios/Flutter/App.podspec
+ios/Runner/GeneratedPluginRegistrant.*
+
+# =========================
+# macOS
+# =========================
+macos/Flutter/ephemeral/
+macos/Pods/
+macos/.symlinks/
+macos/Runner/GeneratedPluginRegistrant.*
+
+# =========================
+# Web
+# =========================
+web/.dart_tool/
+web/build/
+
+# =========================
+# Windows
+# =========================
+windows/flutter/ephemeral/
+windows/Runner/GeneratedPluginRegistrant.*
+
+# =========================
+# Linux
+# =========================
+linux/flutter/ephemeral/
+linux/Runner/GeneratedPluginRegistrant.*
+
+# =========================
+# Firebase / Environment
+# =========================
+**/google-services.json
+**/GoogleService-Info.plist
+.env
+.env.*
+
+# =========================
+# Logs
+# =========================
+*.log
+
+# =========================
+# Misc
+# =========================
+.DS_Store
+Thumbs.db
