@@ -45,6 +45,9 @@ class ComicDetailView extends StackedView<ComicDetailViewmodel> {
             ComicDetail(comic: comic),
             ListChapter(
               chapters: vm.chapters,
+              onChapterTap: (chapter) {
+                vm.goToChapterDetail(chapter);
+              },
             )
           ]),
         ));

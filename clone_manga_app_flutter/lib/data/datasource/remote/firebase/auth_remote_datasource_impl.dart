@@ -68,14 +68,12 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       }
 
       return await _getUserByUid(uid);
-
     } on GoogleSignInException catch (e) {
       // user cancel OR google flow error
       if (e.code == GoogleSignInExceptionCode.canceled) {
         throw const GoogleSignInCancelledException();
       }
       throw const GoogleAuthFailedException();
-
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'user-disabled':
@@ -89,9 +87,6 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       throw const GoogleAuthFailedException();
     }
   }
-
-
-
 
   @override
   Future<UserDto> loginWithUsername({
@@ -110,7 +105,6 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       }
 
       final fakeEmail = _fakeEmailFromUsername(username);
-
 
       final data = userDoc.docs.first.data();
       final linkedProvider = data['linkedProvider'] as String?;
@@ -139,7 +133,6 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       }
 
       return await _getUserByUid(uid);
-
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'user-not-found':
@@ -149,7 +142,7 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
           throw const InvalidCredentialsException();
 
         case 'invalid-email':
-        // trường hợp fake email generate sai
+          // trường hợp fake email generate sai
           throw const InvalidCredentialsException();
 
         case 'network-request-failed':
@@ -160,7 +153,6 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       }
     }
   }
-
 
   @override
   Future<void> logout() async {
@@ -207,7 +199,6 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
 
       // 3️⃣ Return DTO
       return await _getUserByUid(uid);
-
     } on FirebaseAuthException catch (e) {
       switch (e.code) {
         case 'email-already-in-use':
@@ -232,7 +223,6 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
     }
   }
 
-
   Future<UserDto> _getUserByUid(String uid) async {
     final doc = await _userCol.doc(uid).get();
 
@@ -252,5 +242,4 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
       avatarUrl: data['avatarUrl'] as String?,
     );
   }
-
 }

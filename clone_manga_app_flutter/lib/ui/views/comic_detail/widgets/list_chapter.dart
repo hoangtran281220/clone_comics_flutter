@@ -3,8 +3,10 @@ import 'package:flutter/material.dart';
 import '../../../../domain/entities/chapter.dart';
 
 class ListChapter extends StatelessWidget {
-  const ListChapter({super.key, required this.chapters});
+  const ListChapter(
+      {super.key, required this.chapters, required this.onChapterTap});
   final List<Chapter> chapters;
+  final void Function(Chapter chapter) onChapterTap;
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +52,7 @@ class ListChapter extends StatelessWidget {
                   'Lượt xem: ${chapter.views}',
                   style: Theme.of(context).textTheme.bodySmall,
                 ),
+                onTap: () => onChapterTap(chapters[index]),
               ),
             );
           },
