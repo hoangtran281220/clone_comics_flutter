@@ -61,10 +61,6 @@ class HomeViewModel extends BaseViewModel {
     notifyListeners();
   }
 
-  void onFavoriteClicked(Comic comic) {
-    _favoriteState.add(comic.title);
-  }
-
   void openComicDetail(String comicId) async {
     await _navigationService.navigateToComicDetailView(comicId: comicId);
   }

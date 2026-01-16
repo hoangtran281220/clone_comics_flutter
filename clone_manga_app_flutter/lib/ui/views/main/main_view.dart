@@ -1,3 +1,4 @@
+import 'package:clone_manga_app_flutter/ui/ui.dart';
 import 'package:clone_manga_app_flutter/ui/views/favorite/favorite_view.dart';
 import 'package:clone_manga_app_flutter/ui/views/home/home_view.dart';
 import 'package:flutter/material.dart';
@@ -21,9 +22,10 @@ class MainView extends StackedView<MainViewModel> {
         ),
         body: IndexedStack(
           index: viewModel.currentIndex,
-          children: [HomeView(), SearchView(), FavoriteView()],
+          children: [HomeView(), SearchView(), FavoriteView(), HistoryView()],
         ),
         bottomNavigationBar: BottomNavigationBar(
+          type: BottomNavigationBarType.fixed,
           currentIndex: viewModel.currentIndex,
           onTap: viewModel.changeTab,
           items: [
@@ -31,7 +33,9 @@ class MainView extends StackedView<MainViewModel> {
             BottomNavigationBarItem(
                 icon: Icon(Icons.search), label: 'Tìm kiếm'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.favorite), label: 'Yêu thích')
+                icon: Icon(Icons.favorite), label: 'Yêu thích'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.history), label: 'Lịch sử'),
           ],
         ));
   }

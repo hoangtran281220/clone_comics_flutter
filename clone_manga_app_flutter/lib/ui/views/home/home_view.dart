@@ -45,7 +45,6 @@ class HomeView extends StackedView<HomeViewModel> {
           return ComicGridItem(
             comic: comic,
             onTap: () {
-              vm.onFavoriteClicked(comic);
               vm.openComicDetail(comic.id);
             },
           );

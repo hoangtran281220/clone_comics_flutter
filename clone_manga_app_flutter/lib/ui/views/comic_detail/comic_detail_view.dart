@@ -42,7 +42,24 @@ class ComicDetailView extends StackedView<ComicDetailViewmodel> {
         body: SingleChildScrollView(
           child:
               Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-            ComicDetail(comic: comic),
+            ComicDetail(
+                comic: comic,
+                isDescriptionExpanded: vm.isDescriptionExpanded,
+                onToggle: vm.toggleDescription),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 18, vertical: 8),
+              child: Align(
+                alignment: Alignment.centerRight,
+                child: ElevatedButton.icon(
+                  onPressed: () {},
+                  icon: const Icon(
+                    Icons.favorite,
+                    color: Colors.red,
+                  ),
+                  label: const Text('Yêu thích'),
+                ),
+              ),
+            ),
             ListChapter(
               chapters: vm.chapters,
               onChapterTap: (chapter) {

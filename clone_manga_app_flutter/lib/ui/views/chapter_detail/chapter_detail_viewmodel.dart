@@ -1,5 +1,3 @@
 import 'package:stacked/stacked.dart';
 
-class ChapterDetailViewModel extends BaseViewModel {
-
-}
+class ChapterDetailViewModel extends BaseViewModel {}

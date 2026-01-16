@@ -1,4 +1,3 @@
-// dart format width=80
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 // **************************************************************************
@@ -166,9 +165,9 @@ extension ValueProperties on FormStateHelper {
 }
 
 extension Methods on FormStateHelper {
-  void setUsernameValidationMessage(String? validationMessage) =>
+  setUsernameValidationMessage(String? validationMessage) =>
       this.fieldsValidationMessages[UsernameValueKey] = validationMessage;
-  void setPasswordValidationMessage(String? validationMessage) =>
+  setPasswordValidationMessage(String? validationMessage) =>
       this.fieldsValidationMessages[PasswordValueKey] = validationMessage;
 
   /// Clears text input fields on the Form

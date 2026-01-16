@@ -12,7 +12,8 @@ class AuthRemoteDatasourceImpl implements AuthRemoteDatasource {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn.instance
     ..initialize(
-      serverClientId: '332618593014-t0q3lnk6topakcnkrd5hdf0vv1ksruon.apps.googleusercontent.com',
+      serverClientId:
+          '332618593014-t0q3lnk6topakcnkrd5hdf0vv1ksruon.apps.googleusercontent.com',
     );
 
   CollectionReference<Map<String, dynamic>> get _userCol =>
